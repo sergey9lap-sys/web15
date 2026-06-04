@@ -1326,6 +1326,10 @@ h1 {
   text-wrap: balance;
 }
 
+.thanks-title .line {
+  overflow: hidden;
+}
+
 .thanks-lead,
 .thanks-note {
   max-width: 680px;

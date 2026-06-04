@@ -1,4 +1,9 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { MessageCircle, Send, Users } from "lucide-react";
+import gsap from "gsap";
+import SplitType from "split-type";
 
 const chatLink = "https://t.me/+diyQQoNSVDI5ZjZi";
 
@@ -9,12 +14,50 @@ const supportLinks = [
 ];
 
 export default function ThanksPage() {
+  const pageRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
+
+    let cleanupSplit = () => {};
+
+    const ctx = gsap.context(() => {
+      const titleSplit = new SplitType(".thanks-title", { types: "lines" });
+      cleanupSplit = () => titleSplit.revert();
+
+      gsap.set(titleSplit.lines, { overflow: "hidden" });
+
+      const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+      timeline
+        .from(".thanks-kicker", { y: 18, opacity: 0, duration: 0.5 })
+        .from(titleSplit.lines, { yPercent: 110, opacity: 0, duration: 0.82, stagger: 0.08 }, "-=0.08")
+        .from(".thanks-lead", { y: 22, opacity: 0, duration: 0.62 }, "-=0.18")
+        .from(".thanks-primary", { y: 18, opacity: 0, scale: 0.98, duration: 0.52 }, "-=0.16")
+        .from(".thanks-chat-link", { y: 14, opacity: 0, duration: 0.5 }, "-=0.1")
+        .from(".thanks-note", { y: 18, opacity: 0, duration: 0.55 }, "-=0.08")
+        .from(
+          ".thanks-widget-slot",
+          { clipPath: "inset(0 0 0 76%)", opacity: 0, scale: 0.98, duration: 0.85 },
+          "-=0.72",
+        )
+        .from(".thanks-widget-slot span, .thanks-widget-slot p", { y: 18, opacity: 0, duration: 0.55, stagger: 0.08 }, "-=0.28")
+        .from(".thanks-support", { y: 34, opacity: 0, duration: 0.75 }, "-=0.18")
+        .from(".thanks-support-actions a", { y: 18, opacity: 0, duration: 0.5, stagger: 0.08 }, "-=0.35");
+    }, pageRef);
+
+    return () => {
+      ctx.revert();
+      cleanupSplit();
+    };
+  }, []);
+
   return (
-    <main className="thanks-page">
+    <main className="thanks-page" ref={pageRef}>
       <section className="thanks-hero" aria-labelledby="thanks-title">
         <div className="thanks-copy">
           <p className="thanks-kicker">страница спасибо</p>
-          <h1 id="thanks-title">Регистрация прошла успешно!</h1>
+          <h1 className="thanks-title" id="thanks-title">Регистрация прошла успешно!</h1>
           <p className="thanks-lead">Присоединяйтесь к чату экспертного движа по кнопке ниже:</p>
 
           <a className="thanks-primary" href={chatLink} target="_blank" rel="noopener noreferrer">
