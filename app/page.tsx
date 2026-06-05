@@ -44,26 +44,31 @@ const agenda = [
 const map = [
   {
     role: "Эксперт-практик",
+    avatarPosition: "10% center",
     state: "Ведёте консультации, работаете руками, продаёте своё время",
     products: "разовые консультации 3–10 тыс. ₽, диагностические сессии, курсы, интенсивы, PDF-гайды",
   },
   {
     role: "Наставник",
+    avatarPosition: "30% center",
     state: "Работаете с клиентами 1:1 на результат, есть повторные обращения.",
     products: "наставничество 1:1 на 1–3 месяца, мастер-группы до 8 человек, менторские треки",
   },
   {
     role: "Консультант",
+    avatarPosition: "50% center",
     state: "Вас приглашают как эксперта в чужие проекты и бизнесы",
     products: "стратегические сессии, аудиты, трекинг, проектное сопровождение, корпоративные программы",
   },
   {
     role: "Предприниматель",
+    avatarPosition: "70% center",
     state: "Строите систему, которая работает без вашего постоянного участия",
     products: "клубы по подписке, мастер-группы, агентская модель, партнёрские программы, команда кураторов",
   },
   {
     role: "Визионер",
+    avatarPosition: "90% center",
     state: "Создаёте рынок, а не просто работаете на нём",
     products: "акселераторы, B2B-контракты, образовательные экосистемы, партнёрства с корпорациями, лицензирование методологии",
   },
@@ -73,7 +78,7 @@ const caseStories = [
   {
     name: "Диана Семёнычева",
     role: "Лингвокоуч, AI-архитектор обучения",
-    result: "550 000 ₽",
+    result: "550 000 р",
     photo: "/cases/image3.jpg",
     points: [
       "15+ лет обучала взрослых английскому языку.",
@@ -86,7 +91,7 @@ const caseStories = [
   {
     name: "Максим Шаргородский",
     role: "Эксперт по построению отделов продаж",
-    result: "1 990 000 ₽",
+    result: "1 990 000 р",
     photo: "/cases/image8.png",
     points: [
       "запустил мастер-группу по увеличению прибыли;",
@@ -97,7 +102,7 @@ const caseStories = [
   {
     name: "Дания Ткачева",
     role: "Бизнес-консультант по управлению продажами",
-    result: "739 300 ₽ с запуска курса и 2,5 млн ₽ на групповом наставничестве",
+    result: "739 300 р с запуска курса и 2,5 млн р на групповом наставничестве",
     photo: "/cases/image6.jpg",
     points: [
       "создала флагманский курс;",
@@ -108,7 +113,7 @@ const caseStories = [
   {
     name: "Светлана Дуда",
     role: "Основатель Академии глубинного коучинга",
-    result: "первый поток на 1,1 млн ₽",
+    result: "первый поток на 1,1 млн р",
     photo: "/cases/image10.jpg",
     points: [
       "упаковала авторскую методологию;",
@@ -131,7 +136,7 @@ const caseStories = [
   {
     name: "Мария Новаторова",
     role: "Автор метода музыкально-сенсорной терапии",
-    result: "650 000 ₽",
+    result: "650 000 р",
     photo: "/cases/image7.jpg",
     points: [
       "построила продуктовую лестницу:",
@@ -142,7 +147,7 @@ const caseStories = [
   {
     name: "Алиса Задорожная",
     role: "Фасилитатор, экс-маркетинг-директор Яндекс Дзена",
-    result: "45 участников на 1,5 млн ₽",
+    result: "45 участников на 1,5 млн р",
     photo: "/cases/image1.jpg",
     points: [
       "Стало:",
@@ -155,7 +160,7 @@ const caseStories = [
   {
     name: "Ана Атман",
     role: "Основатель школы «Открытая Жизнь»",
-    result: "300 000 ₽",
+    result: "300 000 р",
     photo: "/cases/image2.jpg",
     points: [
       "пересобрала продуктовую линейку;",
@@ -177,12 +182,12 @@ const caseStories = [
   {
     name: "Константин Воробьев",
     role: "Тренер по плаванию, основатель сети клубов по обучению взрослых плаванию",
-    result: "1 990 000 рублей",
-    photo: "/cases/image9.png",
+    result: "1 990 000 р",
+    photo: "/константин_воробьев.jpg",
     points: [
       "Разработан курс «Сила Воды» по обучению взрослых плаванию через ОНЛАЙН на 2 месяца обучения",
       "Проведен тестовый запуск с фокус-группой",
-      "На запуске программы удалось заработать -- 1 990 000 рублей",
+      "На запуске программы удалось заработать — 1 990 000 р",
     ],
   },
 ];
@@ -190,15 +195,17 @@ const caseStories = [
 const tariffs = [
   {
     name: "Слушатель",
-    price: "0 ₽",
-    note: "",
+    price: "0 р",
+    note: "Бесплатный формат для тех, кто хочет понять, какой продукт запускать дальше.",
     features: ["Доступ к эфиру 15 июня онлайн", "Запись на 48 часов", "Экспертный движ: 3 дня заданий в чате"],
     cta: "Зарегистрироваться бесплатно",
+    widgetId: "c3dcb6887148156cd091960edd7e6154a3da24c3",
+    widgetSrc: "https://agkedu.getcourse.ru/pl/lite/widget/script?id=1614383",
   },
   {
     name: "Эксперт",
-    price: "1 900 ₽",
-    oldPrice: "3 900 ₽",
+    price: "1 900 р",
+    oldPrice: "3 900 р",
     note: "Для тех, кто привык принимать решения быстро и хочет начать масштабироваться прямо сейчас.",
     features: [
       "Доступ к эфиру 15 июня + запись",
@@ -207,6 +214,8 @@ const tariffs = [
       "Живые разборы ваших кейсов с Александрой в прямом эфире",
     ],
     cta: "Хочу на мастер-класс",
+    widgetId: "7883e0043ed989dc88fe453567ec7b7e16f2c8e1",
+    widgetSrc: "https://agkedu.getcourse.ru/pl/lite/widget/script?id=1614463",
   },
 ];
 
@@ -226,17 +235,38 @@ const legalLinks = [
   { label: "Политика конфиденциальности", href: "https://agkedu.ru/personaldata" },
 ];
 
-function ButtonLink({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+type WidgetConfig = {
+  title: string;
+  widgetId: string;
+  widgetSrc: string;
+};
+
+const freeWidget: WidgetConfig = {
+  title: "Регистрация на бесплатную встречу",
+  widgetId: "c3dcb6887148156cd091960edd7e6154a3da24c3",
+  widgetSrc: "https://agkedu.getcourse.ru/pl/lite/widget/script?id=1614383",
+};
+
+function ButtonLink({
+  children,
+  dark = false,
+  onClick,
+}: {
+  children: React.ReactNode;
+  dark?: boolean;
+  onClick?: () => void;
+}) {
   return (
-    <motion.a
-      href="#tariffs"
+    <motion.button
+      type="button"
+      onClick={onClick}
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.98 }}
       className={dark ? "btn btn-dark" : "btn btn-wine"}
     >
       <span>{children}</span>
       <ArrowRight aria-hidden size={18} />
-    </motion.a>
+    </motion.button>
   );
 }
 
@@ -244,7 +274,9 @@ export default function Home() {
   const rootRef = useRef<HTMLElement | null>(null);
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const caseStageRef = useRef<HTMLDivElement | null>(null);
+  const widgetSlotRef = useRef<HTMLDivElement | null>(null);
   const [activeCase, setActiveCase] = useState(0);
+  const [activeWidget, setActiveWidget] = useState<WidgetConfig | null>(null);
   const activeStory = caseStories[activeCase];
 
   const nextCase = () => setActiveCase((current) => (current + 1) % caseStories.length);
@@ -569,6 +601,18 @@ export default function Home() {
   }, [activeCase]);
 
   useEffect(() => {
+    const slot = widgetSlotRef.current;
+    if (!slot || !activeWidget) return;
+
+    slot.innerHTML = "";
+    const script = document.createElement("script");
+    script.id = activeWidget.widgetId;
+    script.src = activeWidget.widgetSrc;
+    script.async = true;
+    slot.appendChild(script);
+  }, [activeWidget]);
+
+  useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) return;
 
@@ -607,14 +651,19 @@ export default function Home() {
         <div className="hero-copy">
           <div className="eyebrow hero-eyebrow">
             <CalendarDays size={17} />
-            Бесплатная онлайн-встреча · 15 июня · 18:30 мск
+            <span>Бесплатная онлайн-встреча</span>
+            <strong>15 июня · 18:30 мск</strong>
           </div>
           <h1 className="split-title">Что запускать эксперту и предпринимателю в 2026 году, когда охваты больше не работают</h1>
           <p className="hero-lead reveal">
             Разберём, какие продукты помогают масштабироваться сегодня — без ежедневного ведения соцсетей и зависимости от запусков
           </p>
           <div className="hero-actions">
-            <ButtonLink>Принять участие</ButtonLink>
+            <ButtonLink onClick={() => setActiveWidget(freeWidget)}>Принять участие</ButtonLink>
+          </div>
+          <div className="registration-bonus reveal">
+            <Image src="/methodology-hero.png" alt="Бонус за регистрацию" width={132} height={132} />
+            <p>За регистрацию вы получаете «25 идей для проектирования премиального продукта»</p>
           </div>
         </div>
         <div className="hero-visual" ref={heroVisualRef} aria-label="Фото Александры Горевой-Куртышевой">
@@ -635,7 +684,6 @@ export default function Home() {
       <section className="section pain-grid" id="for-whom">
         <div className="pain-head">
           <h2>Узнаёте себя?</h2>
-          <p>Если хотя бы два пункта про вас — эта встреча для вас.</p>
         </div>
         <div className="pain-list">
           {pains.map((pain, index) => (
@@ -646,7 +694,8 @@ export default function Home() {
           ))}
         </div>
         <div className="pain-action">
-          <ButtonLink dark>Зарегистрироваться</ButtonLink>
+          <p>Если хотя бы два пункта про вас — эта встреча для вас.</p>
+          <ButtonLink dark onClick={() => setActiveWidget(freeWidget)}>Зарегистрироваться</ButtonLink>
         </div>
       </section>
 
@@ -663,6 +712,9 @@ export default function Home() {
             </article>
           ))}
         </div>
+        <div className="agenda-action reveal">
+          <ButtonLink onClick={() => setActiveWidget(freeWidget)}>Зарегистрироваться</ButtonLink>
+        </div>
       </section>
 
       <section className="section product-map" id="map">
@@ -673,10 +725,18 @@ export default function Home() {
           <div className="map-rail">
             {map.map((item) => (
               <article className="map-card card-motion" key={item.role}>
-                <span>Эксперт</span>
-                <h3>{item.role}</h3>
+                <div className="map-avatar" aria-hidden>
+                  <Image
+                    src="/product-archetype-avatars.png"
+                    alt=""
+                    fill
+                    sizes="120px"
+                    style={{ objectPosition: item.avatarPosition }}
+                  />
+                </div>
+                <h3>{item.role.toUpperCase()}</h3>
                 <p>{item.state}</p>
-                <div>
+                <div className="map-products">
                   <small>Подходящие продукты</small>
                   <strong>{item.products}</strong>
                 </div>
@@ -690,31 +750,13 @@ export default function Home() {
         <div className="section-head full-head cases-title">
           <h2>У них получилось…</h2>
         </div>
+        <div className="case-showcase-meta">
+          <span>{String(activeCase + 1).padStart(2, "0")} / {String(caseStories.length).padStart(2, "0")}</span>
+          <div className="case-active-line">
+            <i style={{ width: `${((activeCase + 1) / caseStories.length) * 100}%` }} />
+          </div>
+        </div>
         <div className="case-showcase" ref={caseStageRef}>
-          <aside className="case-showcase-list" aria-label="Список кейсов">
-            <div className="case-showcase-meta">
-              <span>{String(activeCase + 1).padStart(2, "0")} / {String(caseStories.length).padStart(2, "0")}</span>
-              <div className="case-active-line">
-                <i style={{ width: `${((activeCase + 1) / caseStories.length) * 100}%` }} />
-              </div>
-            </div>
-            <div className="case-list" role="tablist">
-              {caseStories.map((item, index) => (
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={index === activeCase}
-                  key={item.name}
-                  className={index === activeCase ? "case-list-item active" : "case-list-item"}
-                  onClick={() => setActiveCase(index)}
-                >
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{item.name}</strong>
-                </button>
-              ))}
-            </div>
-          </aside>
-
           <div className="case-showcase-panel">
             <div className="case-copy">
               <p className="case-role case-animate">{activeStory.role}</p>
@@ -762,10 +804,6 @@ export default function Home() {
             >
               <div className="tariff-top">
                 <span>{tariff.name}</span>
-                <div>
-                  {tariff.oldPrice ? <small>{tariff.oldPrice}</small> : null}
-                  <strong>{tariff.price}</strong>
-                </div>
               </div>
               {tariff.note ? <p>{tariff.note}</p> : null}
               <ul>
@@ -776,7 +814,22 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <ButtonLink dark={index === 1}>{tariff.cta}</ButtonLink>
+              <div className="tariff-price">
+                {tariff.oldPrice ? <small>{tariff.oldPrice}</small> : null}
+                <strong>{tariff.price}</strong>
+              </div>
+              <ButtonLink
+                dark={index === 1}
+                onClick={() =>
+                  setActiveWidget({
+                    title: tariff.name === "Слушатель" ? "Регистрация на бесплатный тариф" : "Оплата тарифа «Эксперт»",
+                    widgetId: tariff.widgetId,
+                    widgetSrc: tariff.widgetSrc,
+                  })
+                }
+              >
+                {tariff.cta}
+              </ButtonLink>
             </article>
           ))}
         </div>
@@ -893,6 +946,20 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      {activeWidget ? (
+        <div className="widget-modal" role="dialog" aria-modal="true" aria-label={activeWidget.title}>
+          <button className="widget-backdrop" type="button" aria-label="Закрыть форму" onClick={() => setActiveWidget(null)} />
+          <div className="widget-dialog">
+            <div className="widget-head">
+              <h2>{activeWidget.title}</h2>
+              <button type="button" onClick={() => setActiveWidget(null)} aria-label="Закрыть форму">
+                ×
+              </button>
+            </div>
+            <div className="widget-slot" ref={widgetSlotRef} />
+          </div>
+        </div>
+      ) : null}
     </main>
   );
 }

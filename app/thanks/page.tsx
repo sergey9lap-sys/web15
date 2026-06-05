@@ -34,14 +34,7 @@ export default function ThanksPage() {
         .from(titleSplit.lines, { yPercent: 110, opacity: 0, duration: 0.82, stagger: 0.08 }, "-=0.08")
         .from(".thanks-lead", { y: 22, opacity: 0, duration: 0.62 }, "-=0.18")
         .from(".thanks-primary", { y: 18, opacity: 0, scale: 0.98, duration: 0.52 }, "-=0.16")
-        .from(".thanks-chat-link", { y: 14, opacity: 0, duration: 0.5 }, "-=0.1")
         .from(".thanks-note", { y: 18, opacity: 0, duration: 0.55 }, "-=0.08")
-        .from(
-          ".thanks-widget-slot",
-          { clipPath: "inset(0 0 0 76%)", opacity: 0, scale: 0.98, duration: 0.85 },
-          "-=0.72",
-        )
-        .from(".thanks-widget-slot span, .thanks-widget-slot p", { y: 18, opacity: 0, duration: 0.55, stagger: 0.08 }, "-=0.28")
         .from(".thanks-support", { y: 34, opacity: 0, duration: 0.75 }, "-=0.18")
         .from(".thanks-support-actions a", { y: 18, opacity: 0, duration: 0.5, stagger: 0.08 }, "-=0.35");
     }, pageRef);
@@ -65,19 +58,10 @@ export default function ThanksPage() {
             <Send size={20} aria-hidden />
           </a>
 
-          <a className="thanks-chat-link" href={chatLink} target="_blank" rel="noopener noreferrer">
-            {chatLink}
-          </a>
-
           <p className="thanks-note">
-            Ссылки на эфир и все анонсы только там. Напоминание, что эфир пройдет 15 июня в 18:30 мск.
+            Ссылки на эфир и все анонсы только там. Напоминаем, что эфир пройдет 15 июня в 18:30 мск.
           </p>
         </div>
-
-        <aside className="thanks-widget-slot" aria-label="Место для будущего виджета">
-          <span>будущий виджет</span>
-          <p>Здесь позже можно поставить форму регистрации или блок оплаты.</p>
-        </aside>
       </section>
 
       <section className="thanks-support">
