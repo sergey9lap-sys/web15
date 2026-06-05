@@ -585,7 +585,7 @@ h1 {
 .map-card {
   position: relative;
   display: grid;
-  grid-template-rows: 74px 116px 1fr;
+  grid-template-rows: 56px 116px 1fr;
   row-gap: 16px;
   width: 100%;
   min-height: 430px;
@@ -636,10 +636,10 @@ h1 {
 
 .map-avatar {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 112px;
-  height: 112px;
+  top: 18px;
+  right: 18px;
+  width: 54px;
+  height: 54px;
   overflow: hidden;
   border: 1px solid rgba(104, 25, 30, 0.18);
   border-radius: 999px;
@@ -649,8 +649,7 @@ h1 {
 
 .map-avatar img {
   object-fit: cover;
-  width: 500% !important;
-  max-width: none !important;
+  object-position: center 24%;
   filter: saturate(0.98) contrast(1.02);
 }
 
@@ -666,9 +665,9 @@ h1 {
 
 .map-card h3 {
   align-self: start;
-  max-width: calc(100% - 86px);
+  max-width: calc(100% - 62px);
   white-space: nowrap;
-  font-size: clamp(19px, 1.22vw, 22px);
+  font-size: clamp(18px, 1.12vw, 21px);
   line-height: 1.05;
   letter-spacing: 0.03em;
 }
@@ -1817,8 +1816,8 @@ h1 {
   }
 
   .map-avatar {
-    width: 96px;
-    height: 96px;
+    width: 50px;
+    height: 50px;
   }
 
   .map-card h3 {

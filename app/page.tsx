@@ -44,31 +44,31 @@ const agenda = [
 const map = [
   {
     role: "Эксперт-практик",
-    avatarPosition: "10% center",
+    avatar: "/avatar-practitioner.png",
     state: "Ведёте консультации, работаете руками, продаёте своё время",
     products: "разовые консультации 3–10 тыс. ₽, диагностические сессии, курсы, интенсивы, PDF-гайды",
   },
   {
     role: "Наставник",
-    avatarPosition: "30% center",
+    avatar: "/avatar-mentor.png",
     state: "Работаете с клиентами 1:1 на результат, есть повторные обращения.",
     products: "наставничество 1:1 на 1–3 месяца, мастер-группы до 8 человек, менторские треки",
   },
   {
     role: "Консультант",
-    avatarPosition: "50% center",
+    avatar: "/avatar-consultant.png",
     state: "Вас приглашают как эксперта в чужие проекты и бизнесы",
     products: "стратегические сессии, аудиты, трекинг, проектное сопровождение, корпоративные программы",
   },
   {
     role: "Предприниматель",
-    avatarPosition: "70% center",
+    avatar: "/avatar-entrepreneur.png",
     state: "Строите систему, которая работает без вашего постоянного участия",
     products: "клубы по подписке, мастер-группы, агентская модель, партнёрские программы, команда кураторов",
   },
   {
     role: "Визионер",
-    avatarPosition: "90% center",
+    avatar: "/avatar-visionary.png",
     state: "Создаёте рынок, а не просто работаете на нём",
     products: "акселераторы, B2B-контракты, образовательные экосистемы, партнёрства с корпорациями, лицензирование методологии",
   },
@@ -727,11 +727,10 @@ export default function Home() {
               <article className="map-card card-motion" key={item.role}>
                 <div className="map-avatar" aria-hidden>
                   <Image
-                    src="/product-archetype-avatars.png"
+                    src={item.avatar}
                     alt=""
                     fill
-                    sizes="120px"
-                    style={{ objectPosition: item.avatarPosition }}
+                    sizes="64px"
                   />
                 </div>
                 <h3>{item.role.toUpperCase()}</h3>
