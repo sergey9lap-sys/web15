@@ -602,8 +602,9 @@ h1 {
   will-change: transform;
 }
 
+.map-card:nth-child(1) h3,
 .map-card:nth-child(4) h3 {
-  font-size: clamp(18px, 1.16vw, 21px);
+  font-size: clamp(16px, 1vw, 19px);
   letter-spacing: 0;
 }
 
@@ -636,10 +637,10 @@ h1 {
 
 .map-avatar {
   position: absolute;
-  top: 18px;
-  right: 18px;
-  width: 54px;
-  height: 54px;
+  top: 20px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
   overflow: hidden;
   border: 1px solid rgba(104, 25, 30, 0.18);
   border-radius: 999px;
@@ -665,10 +666,12 @@ h1 {
 
 .map-card h3 {
   align-self: start;
-  max-width: calc(100% - 62px);
-  white-space: nowrap;
-  font-size: clamp(18px, 1.12vw, 21px);
-  line-height: 1.05;
+  max-width: none;
+  min-height: 46px;
+  padding-right: 58px;
+  white-space: normal;
+  font-size: clamp(17px, 1.06vw, 20px);
+  line-height: 1.08;
   letter-spacing: 0.03em;
 }
 
@@ -1819,12 +1822,13 @@ h1 {
   }
 
   .map-avatar {
-    width: 50px;
-    height: 50px;
+    width: 42px;
+    height: 42px;
   }
 
   .map-card h3 {
     white-space: normal;
+    padding-right: 54px;
   }
 
   .map-rail {
