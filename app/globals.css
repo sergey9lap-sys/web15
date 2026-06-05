@@ -1432,17 +1432,6 @@ h1 {
   background: #fff8ef;
 }
 
-.widget-direct-link {
-  display: block;
-  border-top: 1px solid rgba(104, 25, 30, 0.12);
-  padding: 14px 20px 18px;
-  color: var(--wine);
-  font-size: 14px;
-  font-weight: 800;
-  text-align: center;
-  text-decoration: underline;
-}
-
 .thanks-page {
   min-height: 100vh;
   padding: clamp(44px, 7vw, 86px) clamp(22px, 5vw, 72px);

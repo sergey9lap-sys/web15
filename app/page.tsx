@@ -947,9 +947,6 @@ export default function Home() {
               title={activeWidget.title}
               loading="eager"
             />
-            <a className="widget-direct-link" href={activeWidget.widgetUrl} target="_blank" rel="noopener noreferrer">
-              Открыть форму в новом окне
-            </a>
           </div>
         </div>
       ) : null}
