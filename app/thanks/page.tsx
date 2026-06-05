@@ -5,7 +5,7 @@ import { MessageCircle, Send, Users } from "lucide-react";
 import gsap from "gsap";
 import SplitType from "split-type";
 
-const chatLink = "https://t.me/+diyQQoNSVDI5ZjZi";
+const chatLink = "https://t.me/+djyQQoNSVDI5ZjZi";
 
 const supportLinks = [
   { label: "ВКонтакте", short: "VK", href: "https://agkedu.getcourse.ru/vk_subscribe", icon: Users },

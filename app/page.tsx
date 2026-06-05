@@ -200,7 +200,7 @@ const tariffs = [
     features: ["Доступ к эфиру 15 июня онлайн", "Запись на 48 часов", "Экспертный движ: 3 дня заданий в чате"],
     cta: "Зарегистрироваться бесплатно",
     widgetId: "c3dcb6887148156cd091960edd7e6154a3da24c3",
-    widgetSrc: "https://agkedu.getcourse.ru/pl/lite/widget/script?id=1614383",
+    widgetUrl: "https://agkedu.getcourse.ru/pl/lite/widget/widget?id=1614383",
   },
   {
     name: "Эксперт",
@@ -215,7 +215,7 @@ const tariffs = [
     ],
     cta: "Хочу на мастер-класс",
     widgetId: "7883e0043ed989dc88fe453567ec7b7e16f2c8e1",
-    widgetSrc: "https://agkedu.getcourse.ru/pl/lite/widget/script?id=1614463",
+    widgetUrl: "https://agkedu.getcourse.ru/pl/lite/widget/widget?id=1614463",
   },
 ];
 
@@ -238,13 +238,7 @@ const legalLinks = [
 type WidgetConfig = {
   title: string;
   widgetId: string;
-  widgetSrc: string;
-};
-
-const freeWidget: WidgetConfig = {
-  title: "Регистрация на бесплатную встречу",
-  widgetId: "c3dcb6887148156cd091960edd7e6154a3da24c3",
-  widgetSrc: "https://agkedu.getcourse.ru/pl/lite/widget/script?id=1614383",
+  widgetUrl: string;
 };
 
 function ButtonLink({
@@ -257,16 +251,20 @@ function ButtonLink({
   onClick?: () => void;
 }) {
   return (
-    <motion.button
-      type="button"
-      onClick={onClick}
+    <motion.a
+      href="#tariffs"
+      onClick={(event) => {
+        if (!onClick) return;
+        event.preventDefault();
+        onClick();
+      }}
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.98 }}
       className={dark ? "btn btn-dark" : "btn btn-wine"}
     >
       <span>{children}</span>
       <ArrowRight aria-hidden size={18} />
-    </motion.button>
+    </motion.a>
   );
 }
 
@@ -274,7 +272,6 @@ export default function Home() {
   const rootRef = useRef<HTMLElement | null>(null);
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
   const caseStageRef = useRef<HTMLDivElement | null>(null);
-  const widgetSlotRef = useRef<HTMLDivElement | null>(null);
   const [activeCase, setActiveCase] = useState(0);
   const [activeWidget, setActiveWidget] = useState<WidgetConfig | null>(null);
   const activeStory = caseStories[activeCase];
@@ -601,18 +598,6 @@ export default function Home() {
   }, [activeCase]);
 
   useEffect(() => {
-    const slot = widgetSlotRef.current;
-    if (!slot || !activeWidget) return;
-
-    slot.innerHTML = "";
-    const script = document.createElement("script");
-    script.id = activeWidget.widgetId;
-    script.src = activeWidget.widgetSrc;
-    script.async = true;
-    slot.appendChild(script);
-  }, [activeWidget]);
-
-  useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) return;
 
@@ -659,7 +644,7 @@ export default function Home() {
             Разберём, какие продукты помогают масштабироваться сегодня — без ежедневного ведения соцсетей и зависимости от запусков
           </p>
           <div className="hero-actions">
-            <ButtonLink onClick={() => setActiveWidget(freeWidget)}>Принять участие</ButtonLink>
+            <ButtonLink>Принять участие</ButtonLink>
           </div>
           <div className="registration-bonus reveal">
             <Image src="/methodology-hero.png" alt="Бонус за регистрацию" width={132} height={132} />
@@ -695,7 +680,7 @@ export default function Home() {
         </div>
         <div className="pain-action">
           <p>Если хотя бы два пункта про вас — эта встреча для вас.</p>
-          <ButtonLink dark onClick={() => setActiveWidget(freeWidget)}>Зарегистрироваться</ButtonLink>
+          <ButtonLink dark>Зарегистрироваться</ButtonLink>
         </div>
       </section>
 
@@ -713,7 +698,7 @@ export default function Home() {
           ))}
         </div>
         <div className="agenda-action reveal">
-          <ButtonLink onClick={() => setActiveWidget(freeWidget)}>Зарегистрироваться</ButtonLink>
+          <ButtonLink>Зарегистрироваться</ButtonLink>
         </div>
       </section>
 
@@ -823,7 +808,7 @@ export default function Home() {
                   setActiveWidget({
                     title: tariff.name === "Слушатель" ? "Регистрация на бесплатный тариф" : "Оплата тарифа «Эксперт»",
                     widgetId: tariff.widgetId,
-                    widgetSrc: tariff.widgetSrc,
+                    widgetUrl: tariff.widgetUrl,
                   })
                 }
               >
@@ -955,7 +940,16 @@ export default function Home() {
                 ×
               </button>
             </div>
-            <div className="widget-slot" ref={widgetSlotRef} />
+            <iframe
+              className="widget-frame"
+              key={activeWidget.widgetId}
+              src={activeWidget.widgetUrl}
+              title={activeWidget.title}
+              loading="eager"
+            />
+            <a className="widget-direct-link" href={activeWidget.widgetUrl} target="_blank" rel="noopener noreferrer">
+              Открыть форму в новом окне
+            </a>
           </div>
         </div>
       ) : null}

@@ -1384,7 +1384,7 @@ h1 {
   position: relative;
   z-index: 1;
   width: min(100%, 680px);
-  max-height: min(86vh, 780px);
+  max-height: min(92vh, 860px);
   overflow: auto;
   border: 1px solid rgba(255, 244, 228, 0.24);
   border-radius: 10px;
@@ -1424,9 +1424,23 @@ h1 {
   cursor: pointer;
 }
 
-.widget-slot {
-  min-height: 260px;
-  padding: 20px;
+.widget-frame {
+  display: block;
+  width: 100%;
+  min-height: min(72vh, 620px);
+  border: 0;
+  background: #fff8ef;
+}
+
+.widget-direct-link {
+  display: block;
+  border-top: 1px solid rgba(104, 25, 30, 0.12);
+  padding: 14px 20px 18px;
+  color: var(--wine);
+  font-size: 14px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: underline;
 }
 
 .thanks-page {
