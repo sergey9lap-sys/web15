@@ -8,9 +8,9 @@ import SplitType from "split-type";
 const chatLink = "https://t.me/+djyQQoNSVDI5ZjZi";
 
 const supportLinks = [
-  { label: "ВКонтакте", short: "VK", href: "https://agkedu.getcourse.ru/vk_subscribe", icon: Users },
-  { label: "Телеграм", short: "TG", href: "https://agkedu.getcourse.ru/tg_subscribe", icon: Send },
-  { label: "Макс", short: "MAX", href: "https://agkedu.getcourse.ru/max_subscribe", icon: MessageCircle },
+  { label: "ВКонтакте", href: "https://agkedu.getcourse.ru/vk_subscribe", icon: Users },
+  { label: "Телеграм", href: "https://agkedu.getcourse.ru/tg_subscribe", icon: Send },
+  { label: "Макс", href: "https://agkedu.getcourse.ru/max_subscribe", icon: MessageCircle },
 ];
 
 export default function ThanksPage() {
@@ -30,7 +30,6 @@ export default function ThanksPage() {
 
       const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
       timeline
-        .from(".thanks-kicker", { y: 18, opacity: 0, duration: 0.5 })
         .from(titleSplit.lines, { yPercent: 110, opacity: 0, duration: 0.82, stagger: 0.08 }, "-=0.08")
         .from(".thanks-lead", { y: 22, opacity: 0, duration: 0.62 }, "-=0.18")
         .from(".thanks-primary", { y: 18, opacity: 0, scale: 0.98, duration: 0.52 }, "-=0.16")
@@ -49,7 +48,6 @@ export default function ThanksPage() {
     <main className="thanks-page" ref={pageRef}>
       <section className="thanks-hero" aria-labelledby="thanks-title">
         <div className="thanks-copy">
-          <p className="thanks-kicker">страница спасибо</p>
           <h1 className="thanks-title" id="thanks-title">Регистрация прошла успешно!</h1>
           <p className="thanks-lead">Присоединяйтесь к чату экспертного движа по кнопке ниже:</p>
 
@@ -68,11 +66,10 @@ export default function ThanksPage() {
         <div>
           <p>По всем вопросам обращайтесь в службу заботы</p>
           <div className="thanks-support-actions">
-            {supportLinks.map(({ label, short, href, icon: Icon }) => (
+            {supportLinks.map(({ label, href, icon: Icon }) => (
               <a href={href} target="_blank" rel="noopener noreferrer" key={label}>
                 <Icon size={19} aria-hidden />
-                <span>{short}</span>
-                <small>{label}</small>
+                <span>{label}</span>
               </a>
             ))}
           </div>

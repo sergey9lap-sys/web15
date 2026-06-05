@@ -1462,22 +1462,8 @@ h1 {
   max-width: 850px;
 }
 
-.thanks-kicker {
-  width: fit-content;
-  border: 1px solid rgba(104, 25, 30, 0.72);
-  border-radius: 999px;
-  background: var(--wine);
-  color: var(--sand);
-  padding: 11px 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 12px;
-  font-weight: 900;
-}
-
 .thanks-copy h1 {
   max-width: 760px;
-  margin-top: 28px;
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(42px, 6vw, 82px);
@@ -1577,19 +1563,6 @@ h1 {
   box-shadow: 0 34px 82px rgba(104, 25, 30, 0.36);
 }
 
-.thanks-chat-link {
-  display: block;
-  width: fit-content;
-  max-width: 100%;
-  margin-top: 24px;
-  color: var(--wine);
-  font-size: clamp(16px, 1.8vw, 22px);
-  font-weight: 800;
-  line-height: 1.25;
-  text-decoration: underline;
-  overflow-wrap: anywhere;
-}
-
 .thanks-note {
   margin-top: 30px;
 }
@@ -1621,33 +1594,31 @@ h1 {
 }
 
 .thanks-support-actions a {
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   min-height: 92px;
-  place-items: center;
-  border: 1px solid rgba(255, 244, 228, 0.18);
+  border: 1px solid rgba(159, 183, 189, 0.78);
   border-radius: 10px;
-  background: rgba(255, 244, 228, 0.08);
-  color: var(--sand);
+  background: var(--blue);
+  color: var(--ink);
   padding: 14px 10px;
   font-weight: 900;
-  transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+  box-shadow: 0 18px 42px rgba(159, 183, 189, 0.18);
+  transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
 }
 
 .thanks-support-actions a:hover {
   transform: translateY(-2px);
-  border-color: rgba(255, 244, 228, 0.42);
-  background: var(--wine);
+  border-color: rgba(255, 244, 228, 0.46);
+  background: #c1d5da;
+  color: var(--ink);
 }
 
 .thanks-support-actions span {
-  margin-top: 6px;
-  font-size: 22px;
+  font-size: clamp(18px, 1.4vw, 22px);
   letter-spacing: 0.04em;
-}
-
-.thanks-support-actions small {
-  color: rgba(255, 244, 228, 0.68);
-  font-size: 12px;
 }
 
 @media (max-width: 980px) {
