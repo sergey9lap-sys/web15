@@ -194,7 +194,8 @@ const caseStories = [
 const tariffs = [
   {
     name: "Слушатель",
-    price: "0 р",
+    price: "0",
+    oldPrice: "990",
     note: "Бесплатный формат для тех, кто хочет понять, какой продукт запускать дальше.",
     features: ["Доступ к эфиру 15 июня онлайн", "Запись на 48 часов", "Экспертный движ: 3 дня заданий в чате"],
     cta: "Зарегистрироваться бесплатно",
@@ -203,8 +204,8 @@ const tariffs = [
   },
   {
     name: "Эксперт",
-    price: "1 900 р",
-    oldPrice: "3 900 р",
+    price: "1 900",
+    oldPrice: "3 900",
     note: "Для тех, кто привык принимать решения быстро и хочет начать масштабироваться прямо сейчас.",
     features: [
       "Доступ к эфиру 15 июня + запись",
@@ -239,6 +240,15 @@ type WidgetConfig = {
   widgetId: string;
   widgetUrl: string;
 };
+
+function TariffPrice({ value }: { value: string }) {
+  return (
+    <>
+      {value}
+      <span>р</span>
+    </>
+  );
+}
 
 function ButtonLink({
   children,
@@ -818,14 +828,14 @@ export default function Home() {
                 ))}
               </ul>
               <div className="tariff-price">
-                {tariff.oldPrice ? <small>{tariff.oldPrice}</small> : null}
-                <strong>{tariff.price}</strong>
+                {tariff.oldPrice ? <small><TariffPrice value={tariff.oldPrice} /></small> : null}
+                <strong><TariffPrice value={tariff.price} /></strong>
               </div>
               <ButtonLink
                 dark={index === 1}
                 onClick={() =>
                   setActiveWidget({
-                    title: tariff.name === "Слушатель" ? "Регистрация на бесплатный тариф" : "Оплата тарифа «Эксперт»",
+                    title: tariff.name === "Слушатель" ? "Бесплатная регистрация" : "Оплата «Эксперт»",
                     widgetId: tariff.widgetId,
                     widgetUrl: tariff.widgetUrl,
                   })
