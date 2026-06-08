@@ -199,8 +199,8 @@ const tariffs = [
     note: "Бесплатный формат для тех, кто хочет понять, какой продукт запускать дальше.",
     features: ["Доступ к эфиру 15 июня онлайн", "Запись на 48 часов", "Экспертный движ: 3 дня заданий в чате"],
     cta: "Зарегистрироваться бесплатно",
-    widgetId: "c3dcb6887148156cd091960edd7e6154a3da24c3",
-    widgetUrl: "https://agkedu.getcourse.ru/pl/lite/widget/widget?id=1614383",
+    widgetId: "b3ba4cfef0f862e9d59a7a80195d608acede5b28",
+    widgetUrl: "https://agkedu.getcourse.ru/pl/lite/widget/widget?id=1615201",
   },
   {
     name: "Эксперт",
