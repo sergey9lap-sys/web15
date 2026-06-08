@@ -231,7 +231,10 @@ const legalLinks = [
     label: "Лицензия",
     href: "https://islod.obrnadzor.gov.ru/rlic/details/6009a6d6-0d6f-7d9f-197f-9f9286292347/",
   },
-  { label: "Договор-оферта", href: "https://agkedu.getcourse.ru/oferta_methodology" },
+  {
+    label: "Договор-оферта",
+    href: "https://docs.google.com/document/d/1t6jZzRgC6MbYSxAhUuTf2HJbVIn9GXzp/edit?usp=sharing&ouid=112592013953206750379&rtpof=true&sd=true",
+  },
   { label: "Политика конфиденциальности", href: "https://agkedu.ru/personaldata" },
 ];
 
