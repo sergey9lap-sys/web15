@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import SplitType from "split-type";
+import { addTrackingParamsToUrl } from "./tracking";
 
 const pains = [
   "Есть опыт и результаты, стабильных продаж нет",
@@ -840,7 +841,7 @@ export default function Home() {
                   setActiveWidget({
                     title: tariff.name === "Слушатель" ? "Бесплатная регистрация" : "Оплата «Эксперт»",
                     widgetId: tariff.widgetId,
-                    widgetUrl: tariff.widgetUrl,
+                    widgetUrl: addTrackingParamsToUrl(tariff.widgetUrl),
                   })
                 }
               >
