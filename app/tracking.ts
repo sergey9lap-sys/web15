@@ -85,15 +85,29 @@ export function addTrackingParamsToUrl(url: string) {
   const tracked = getSavedTrackingParams();
   const current = paramsToRecord(new URLSearchParams(window.location.search));
   const params = { ...tracked, ...current };
-
-  if (!Object.keys(params).length) return url;
-
   const nextUrl = new URL(url, window.location.origin);
   Object.entries(params).forEach(([key, value]) => {
     if (!nextUrl.searchParams.has(key)) {
       nextUrl.searchParams.set(key, value);
     }
   });
+
+  if (!nextUrl.searchParams.has("ref")) {
+    nextUrl.searchParams.set("ref", document.referrer);
+  }
+
+  if (!nextUrl.searchParams.has("loc")) {
+    nextUrl.searchParams.set("loc", window.location.href);
+  }
+
+  try {
+    const clarityData = (window as typeof window & { clrtQueryData?: unknown }).clrtQueryData;
+    if (clarityData && !nextUrl.searchParams.has("clrtQueryData")) {
+      nextUrl.searchParams.set("clrtQueryData", JSON.stringify(clarityData));
+    }
+  } catch {
+    return nextUrl.toString();
+  }
 
   return nextUrl.toString();
 }
