@@ -1192,13 +1192,14 @@ h1 {
   margin-top: 30px;
 }
 
-.host-facts span {
+.host-facts > span {
   border: 1px solid rgba(255, 244, 228, 0.18);
   border-radius: 999px;
   padding: 10px 13px;
   color: var(--sand);
   background: var(--wine);
   font-size: 14px;
+  line-height: 1.25;
 }
 
 .final-cta {
@@ -1707,6 +1708,14 @@ h1 {
 
   .hero {
     padding-top: 72px;
+  }
+
+  .host-copy {
+    order: 1;
+  }
+
+  .host-portrait {
+    order: 2;
   }
 
   .hero-visual {
