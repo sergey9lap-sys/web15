@@ -284,13 +284,7 @@ function ButtonLink({
 export default function Home() {
   const rootRef = useRef<HTMLElement | null>(null);
   const heroVisualRef = useRef<HTMLDivElement | null>(null);
-  const caseStageRef = useRef<HTMLDivElement | null>(null);
-  const [activeCase, setActiveCase] = useState(0);
   const [activeWidget, setActiveWidget] = useState<WidgetConfig | null>(null);
-  const activeStory = caseStories[activeCase];
-
-  const nextCase = () => setActiveCase((current) => (current + 1) % caseStories.length);
-  const previousCase = () => setActiveCase((current) => (current - 1 + caseStories.length) % caseStories.length);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -449,53 +443,6 @@ export default function Home() {
         scrollTrigger: { trigger: ".pain-action", start: "top 88%" },
       });
 
-      gsap.from(".product-map .section-head", {
-        y: 42,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".product-map", start: "top 76%" },
-      });
-
-      if (window.matchMedia("(min-width: 981px)").matches) {
-        const mapCards = gsap.utils.toArray<HTMLElement>(".map-card");
-        gsap.set(mapCards, {
-          xPercent: (index) => [220, 108, 0, -108, -220][index] ?? 0,
-          y: (index) => [28, 10, 0, 10, 28][index] ?? 0,
-          rotation: (index) => [-13, -6, 0, 6, 13][index] ?? 0,
-          scale: (index) => (index === 2 ? 0.98 : 0.92),
-          zIndex: (index) => 20 - Math.abs(index - 2),
-          transformOrigin: "50% 92%",
-        });
-
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: ".product-map",
-            start: "top top",
-            end: "+=560",
-            pin: true,
-            scrub: 0.65,
-            anticipatePin: 1,
-          },
-        }).to(mapCards, {
-          xPercent: 0,
-          y: 0,
-          rotation: 0,
-          scale: 1,
-          stagger: 0.02,
-          ease: "power2.inOut",
-        });
-      } else {
-        gsap.from(".map-card", {
-          y: 36,
-          opacity: 0,
-          stagger: 0.08,
-          duration: 0.7,
-          ease: "power3.out",
-          scrollTrigger: { trigger: ".product-map", start: "top 72%" },
-        });
-      }
-
       gsap.fromTo(
         ".host-portrait",
         { clipPath: "inset(0 86% 0 0)" },
@@ -604,66 +551,13 @@ export default function Home() {
     };
   }, []);
 
-  useEffect(() => {
-    const el = caseStageRef.current;
-    if (!el) return;
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".case-animate",
-        { y: 24, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.58, stagger: 0.045, ease: "power3.out" },
-      );
-      gsap.fromTo(
-        ".case-visual",
-        { clipPath: "inset(0 0 0 96%)", scale: 1.03 },
-        { clipPath: "inset(0 0 0 0%)", scale: 1, duration: 0.78, ease: "power3.out" },
-      );
-    }, el);
-
-    return () => ctx.revert();
-  }, [activeCase]);
-
-  useEffect(() => {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) return;
-
-    const ctx = gsap.context(() => {
-      gsap.from(".cases-title > *", {
-        y: 30,
-        opacity: 0,
-        duration: 0.72,
-        stagger: 0.06,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".cases-section", start: "top 76%" },
-      });
-      gsap.from(".case-list-item", {
-        x: -24,
-        opacity: 0,
-        duration: 0.62,
-        stagger: 0.035,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".case-showcase", start: "top 72%" },
-      });
-      gsap.from(".case-showcase-panel", {
-        y: 42,
-        opacity: 0,
-        duration: 0.86,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".case-showcase", start: "top 72%" },
-      });
-    }, rootRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <main ref={rootRef} className="site-shell">
       <section className="hero">
         <div className="hero-copy">
           <div className="eyebrow hero-eyebrow">
             <CalendarDays size={17} />
-            <span>Бесплатная онлайн-встреча</span>
+            <span>Бесплатная встреча для экспертов и предпринимателей</span>
             <strong>15 июня · 18:30 мск</strong>
           </div>
           <h1 className="split-title">
@@ -673,11 +567,11 @@ export default function Home() {
             Разберём продукты для масштабирования — без ежедневного ведения соцсетей и зависимости от запусков
           </p>
           <div className="hero-actions">
-            <ButtonLink>Принять участие</ButtonLink>
+            <ButtonLink>Забрать подарок</ButtonLink>
           </div>
           <div className="registration-bonus reveal">
             <div className="bonus-media">
-              <Image src="/hero-bonus.jpg" alt="Бонус за регистрацию" width={92} height={124} />
+              <Image src="/hero-bonus.jpg" alt="Бонус за регистрацию" width={116} height={148} />
             </div>
             <p>
               За регистрацию вы получаете бонус: «25 идей <span className="nowrap">для премиального продукта</span>»
@@ -699,6 +593,35 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section host-section">
+        <div className="host-portrait reveal">
+          <Image
+            src="/host-alexandra.jpg"
+            alt="Александра Горева-Куртышева"
+            width={832}
+            height={1248}
+            sizes="(max-width: 900px) 100vw, 42vw"
+          />
+          <div className="portrait-frame" aria-hidden>
+          </div>
+        </div>
+        <div className="host-copy reveal">
+          <h2 className="host-section-title">КТО ВЕДЁТ ВСТРЕЧУ</h2>
+          <h3 className="host-name">Александра Горева-Куртышева</h3>
+          <p>EdTech-предприниматель, основатель крупнейшей школы по методологии и методического агентства.</p>
+          <div className="host-facts">
+            <span>С 2009 года в бизнес-обучении, с 2020 — <span className="nowrap">в онлайн-образовании</span></span>
+            <span>Архитектор акселератора Бизнес 360 в Сбере</span>
+            <span>40 000 участников</span>
+            <span>Консультант Сбер, Роснефть, Норникель, Nestle, X5, ВкусВилл</span>
+            <span>Вице-президент Ассоциации Спикеров СНГ</span>
+            <span>Выпускница Сколково. Резидент Клуба Первых</span>
+            <span>5 премий за вклад в образование. Победитель номинации «Лучшая школа методологии»</span>
+            <span>Член попечительского совета МШУ Сколково</span>
+          </div>
+        </div>
+      </section>
+
       <section className="section pain-grid" id="for-whom">
         <div className="pain-head">
           <h2>Узнаёте себя?</h2>
@@ -714,98 +637,6 @@ export default function Home() {
         <div className="pain-action">
           <p>Если совпали хотя бы два пункта — встреча для вас</p>
           <ButtonLink dark>Зарегистрироваться</ButtonLink>
-        </div>
-      </section>
-
-      <section className="section agenda-section" id="agenda">
-        <div className="section-head full-head reveal">
-          <h2>ЧТО ОБСУДИМ НА ВСТРЕЧЕ</h2>
-        </div>
-        <div className="agenda-list">
-          {agenda.map((item, index) => (
-            <article className="agenda-item reveal card-motion" key={item.title}>
-              <div>{index + 1}</div>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-        <div className="agenda-action reveal">
-          <ButtonLink>Зарегистрироваться</ButtonLink>
-        </div>
-      </section>
-
-      <section className="section product-map" id="map">
-        <div className="section-head full-head reveal">
-          <h2>КТО ВЫ СЕЙЧАС И КАКИЕ ПРОДУКТЫ ВАМ ПОДХОДЯТ</h2>
-        </div>
-        <div className="map-window reveal">
-          <div className="map-rail">
-            {map.map((item) => (
-              <article className="map-card card-motion" key={item.role}>
-                <div className="map-avatar" aria-hidden>
-                  <Image
-                    src={item.avatar}
-                    alt=""
-                    fill
-                    sizes="42px"
-                  />
-                </div>
-                <h3>{item.role.toUpperCase()}</h3>
-                <p>{item.state}</p>
-                <div className="map-products">
-                  <small>Подходящие продукты</small>
-                  <strong>{item.products}</strong>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section cases-section">
-        <div className="section-head full-head cases-title">
-          <h2>У них получилось…</h2>
-        </div>
-        <div className="case-showcase-meta">
-          <span>{String(activeCase + 1).padStart(2, "0")} / {String(caseStories.length).padStart(2, "0")}</span>
-          <div className="case-active-line">
-            <i style={{ width: `${((activeCase + 1) / caseStories.length) * 100}%` }} />
-          </div>
-        </div>
-        <div className="case-showcase" ref={caseStageRef}>
-          <div className="case-showcase-panel">
-            <div className="case-copy">
-              <p className="case-role case-animate">{activeStory.role}</p>
-              <h3 className="case-animate">{activeStory.name}</h3>
-              <ul className="case-points case-animate">
-                {activeStory.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-              <div className="case-result case-animate">
-                <small>Результат</small>
-                <strong>{activeStory.result}</strong>
-              </div>
-              <div className="case-controls case-animate" aria-label="Управление кейсами">
-                <button type="button" onClick={previousCase} aria-label="Предыдущий кейс">
-                  <ChevronLeft size={18} />
-                </button>
-                <button type="button" onClick={nextCase} aria-label="Следующий кейс">
-                  <ChevronRight size={18} />
-                </button>
-              </div>
-            </div>
-            <div className="case-visual">
-              <Image
-                key={activeStory.photo}
-                src={activeStory.photo}
-                alt={activeStory.name}
-                fill
-                sizes="(max-width: 900px) 100vw, 46vw"
-              />
-            </div>
-          </div>
         </div>
       </section>
 
@@ -849,35 +680,6 @@ export default function Home() {
               </ButtonLink>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="section host-section">
-        <div className="host-portrait reveal">
-          <Image
-            src="/host-alexandra.jpg"
-            alt="Александра Горева-Куртышева"
-            width={832}
-            height={1248}
-            sizes="(max-width: 900px) 100vw, 42vw"
-          />
-          <div className="portrait-frame" aria-hidden>
-          </div>
-        </div>
-        <div className="host-copy reveal">
-          <h2 className="host-section-title">КТО ВЕДЁТ ВСТРЕЧУ</h2>
-          <h3 className="host-name">Александра Горева-Куртышева</h3>
-          <p>EdTech-предприниматель, основатель крупнейшей школы по методологии и методического агентства.</p>
-          <div className="host-facts">
-            <span>С 2009 года в бизнес-обучении, с 2020 — <span className="nowrap">в онлайн-образовании</span></span>
-            <span>Архитектор акселератора Бизнес 360 в Сбере</span>
-            <span>40 000 участников</span>
-            <span>Консультант Сбер, Роснефть, Норникель, Nestle, X5, ВкусВилл</span>
-            <span>Вице-президент Ассоциации Спикеров СНГ</span>
-            <span>Выпускница Сколково. Резидент Клуба Первых</span>
-            <span>5 премий за вклад в образование. Победитель номинации «Лучшая школа методологии»</span>
-            <span>Член попечительского совета МШУ Сколково</span>
-          </div>
         </div>
       </section>
 
