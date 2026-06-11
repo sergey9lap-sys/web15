@@ -443,26 +443,6 @@ export default function Home() {
         scrollTrigger: { trigger: ".pain-action", start: "top 88%" },
       });
 
-      gsap.fromTo(
-        ".host-portrait",
-        { clipPath: "inset(0 86% 0 0)" },
-        {
-          clipPath: "inset(0 0% 0 0)",
-          duration: 1.1,
-          ease: "power3.out",
-          scrollTrigger: { trigger: ".host-section", start: "top 70%" },
-        },
-      );
-      gsap.fromTo(
-        ".host-portrait img",
-        { scale: 1.08 },
-        {
-          scale: 1,
-          duration: 1.2,
-          ease: "power3.out",
-          scrollTrigger: { trigger: ".host-section", start: "top 70%" },
-        },
-      );
       gsap.from(".host-copy .host-section-title", {
         y: 20,
         opacity: 0,
@@ -485,18 +465,13 @@ export default function Home() {
         ease: "power3.out",
         scrollTrigger: { trigger: ".host-section", start: "top 62%" },
       });
-      gsap.from(".host-facts span", {
+      gsap.from(".host-facts > span", {
         y: 20,
         opacity: 0,
         stagger: 0.06,
         duration: 0.55,
         ease: "power3.out",
         scrollTrigger: { trigger: ".host-section", start: "top 58%" },
-      });
-      gsap.to(".host-portrait img", {
-        yPercent: -5,
-        ease: "none",
-        scrollTrigger: { trigger: ".host-section", start: "top bottom", end: "bottom top", scrub: true },
       });
       gsap.to(".host-facts", {
         yPercent: -6,
@@ -594,17 +569,6 @@ export default function Home() {
       </section>
 
       <section className="section host-section">
-        <div className="host-portrait reveal">
-          <Image
-            src="/host-alexandra.jpg"
-            alt="Александра Горева-Куртышева"
-            width={832}
-            height={1248}
-            sizes="(max-width: 900px) 100vw, 42vw"
-          />
-          <div className="portrait-frame" aria-hidden>
-          </div>
-        </div>
         <div className="host-copy reveal">
           <h2 className="host-section-title">КТО ВЕДЁТ ВСТРЕЧУ</h2>
           <h3 className="host-name">Александра Горева-Куртышева</h3>
