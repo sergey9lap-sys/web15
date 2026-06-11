@@ -341,10 +341,10 @@ export default function Home() {
       heroTimeline
         .from(".hero-eyebrow", { y: 22, opacity: 0, duration: 0.55 })
         .from(heroSplit.lines, { yPercent: 115, opacity: 0, duration: 0.9, stagger: 0.08 }, "-=0.18")
-        .from(".hero-lead", { y: 24, opacity: 0, duration: 0.7 }, "-=0.25")
-        .from(".hero-actions > *", { y: 18, opacity: 0, duration: 0.55, stagger: 0.08 }, "-=0.22")
-        .from(".registration-bonus", { y: 20, opacity: 0, scale: 0.96, duration: 0.62 }, "-=0.18")
+        .from(".registration-bonus", { y: 20, opacity: 0, scale: 0.96, duration: 0.62 }, "-=0.25")
         .from(".bonus-media", { rotate: -4, scale: 0.9, opacity: 0, duration: 0.62 }, "-=0.46")
+        .from(".hero-actions > *", { y: 18, opacity: 0, duration: 0.55, stagger: 0.08 }, "-=0.24")
+        .from(".hero-lead", { y: 24, opacity: 0, duration: 0.7 }, "-=0.18")
         .from(".hero-visual", { clipPath: "inset(0 0 0 74%)", opacity: 0, scale: 0.98, duration: 1.05 }, "-=0.52")
         .from(".hero-year", { y: 26, opacity: 0, duration: 0.55 }, "-=0.28")
         .from(".hero-line", { scaleX: 0, opacity: 0, duration: 0.65, stagger: 0.08 }, "-=0.34");
@@ -538,12 +538,6 @@ export default function Home() {
           <h1 className="split-title">
             Что запускать эксперту и предпринимателю <span className="nowrap">в 2026 году</span>, когда охваты больше не работают
           </h1>
-          <p className="hero-lead reveal">
-            Разберём продукты для масштабирования — без ежедневного ведения соцсетей и зависимости от запусков
-          </p>
-          <div className="hero-actions">
-            <ButtonLink>Забрать подарок</ButtonLink>
-          </div>
           <div className="registration-bonus reveal">
             <div className="bonus-media">
               <Image src="/hero-bonus.jpg" alt="Бонус за регистрацию" width={116} height={148} />
@@ -552,6 +546,12 @@ export default function Home() {
               За регистрацию вы получаете бонус: «25 идей <span className="nowrap">для премиального продукта</span>»
             </p>
           </div>
+          <div className="hero-actions">
+            <ButtonLink>Забрать подарок</ButtonLink>
+          </div>
+          <p className="hero-lead reveal">
+            Разберём продукты для масштабирования — без ежедневного ведения соцсетей и зависимости от запусков
+          </p>
         </div>
         <div className="hero-visual" ref={heroVisualRef} aria-label="Фото Александры Горевой-Куртышевой">
           <div className="hero-year" aria-hidden>2026</div>
