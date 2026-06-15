@@ -1445,6 +1445,21 @@ h1 {
   background: #fff8ef;
 }
 
+.widget-open-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(104, 25, 30, 0.14);
+  padding: 14px 18px;
+  background: #fff8ef;
+  color: var(--wine);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .thanks-page {
   min-height: 100vh;
   padding: clamp(44px, 7vw, 86px) clamp(22px, 5vw, 72px);

@@ -62,8 +62,17 @@ export function saveTrackingParamsFromLocation() {
   const next = { ...saved, ...incoming };
   const encoded = encodeURIComponent(JSON.stringify(next));
 
-  window.localStorage.setItem(trackingStorageKey, JSON.stringify(next));
-  document.cookie = `${trackingCookieKey}=${encoded}; path=/; max-age=${trackingMaxAge}; SameSite=Lax`;
+  try {
+    window.localStorage.setItem(trackingStorageKey, JSON.stringify(next));
+  } catch {
+    // Some privacy modes block storage; cookies still give the widget a fallback.
+  }
+
+  try {
+    document.cookie = `${trackingCookieKey}=${encoded}; path=/; max-age=${trackingMaxAge}; SameSite=Lax`;
+  } catch {
+    // Do not let tracking storage failures break registration buttons.
+  }
 }
 
 export function getSavedTrackingParams() {

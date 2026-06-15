@@ -257,19 +257,26 @@ function TariffPrice({ value }: { value: string }) {
 function ButtonLink({
   children,
   dark = false,
+  href = "#tariffs",
+  target,
+  rel,
   onClick,
 }: {
   children: React.ReactNode;
   dark?: boolean;
-  onClick?: () => void;
+  href?: string;
+  target?: string;
+  rel?: string;
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 }) {
   return (
     <motion.a
-      href="#tariffs"
+      href={href}
+      target={target}
+      rel={rel}
       onClick={(event) => {
         if (!onClick) return;
-        event.preventDefault();
-        onClick();
+        onClick(event);
       }}
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.98 }}
@@ -632,13 +639,17 @@ export default function Home() {
               </div>
               <ButtonLink
                 dark={index === 1}
-                onClick={() =>
+                href={tariff.widgetUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(event) => {
+                  event.preventDefault();
                   setActiveWidget({
                     title: tariff.name === "Слушатель" ? "Бесплатная регистрация" : "Оплата «Эксперт»",
                     widgetId: tariff.widgetId,
                     widgetUrl: addTrackingParamsToUrl(tariff.widgetUrl),
-                  })
-                }
+                  });
+                }}
               >
                 {tariff.cta}
               </ButtonLink>
@@ -746,6 +757,9 @@ export default function Home() {
               title={activeWidget.title}
               loading="eager"
             />
+            <a className="widget-open-link" href={activeWidget.widgetUrl} target="_blank" rel="noopener noreferrer">
+              Открыть форму в новой вкладке
+            </a>
           </div>
         </div>
       ) : null}
