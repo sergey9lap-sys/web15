@@ -191,7 +191,12 @@ const tariffs = [
     note: "Бесплатный формат для тех, кто хочет получить запись эфира и собрать основу премиального продукта.",
     features: [
       "Запись эфира на 48 часов",
-      "3 дня заданий в экспертном чате по построению премиального продукта",
+      (
+        <span className="line-stack">
+          <span>3 дня заданий в экспертном чате</span>
+          <span>по построению премиального продукта</span>
+        </span>
+      ),
       "Бонус: «25 идей для премиального продукта»",
     ],
     cta: "ПОЛУЧИТЬ ЗАПИСЬ",
@@ -482,8 +487,9 @@ export default function Home() {
           <div className="hero-actions">
             <ButtonLink>Забрать подарок</ButtonLink>
           </div>
-          <p className="hero-lead reveal">
-            Разберём продукты для масштабирования — без ежедневного ведения соцсетей и зависимости от запусков
+          <p className="hero-lead reveal line-stack">
+            <span>Разберём продукты для масштабирования —</span>
+            <span>без ежедневного ведения соцсетей и зависимости от запусков</span>
           </p>
         </div>
         <div className="hero-visual" ref={heroVisualRef} aria-label="Фото Александры Горевой-Куртышевой">
@@ -505,7 +511,10 @@ export default function Home() {
         <div className="host-copy reveal">
           <h2 className="host-section-title">КТО ВЕДЁТ ВСТРЕЧУ</h2>
           <h3 className="host-name">Александра Горева-Куртышева</h3>
-          <p>EdTech-предприниматель, основатель крупнейшей школы по методологии и методического агентства.</p>
+          <p className="line-stack">
+            <span>EdTech-предприниматель, основатель крупнейшей школы по методологии</span>
+            <span>и методического агентства.</span>
+          </p>
           <div className="host-facts">
             <span>С 2009 года в бизнес-обучении, с 2020 — <span className="nowrap">в онлайн-образовании</span></span>
             <span>Архитектор акселератора Бизнес 360 в Сбере</span>
@@ -534,8 +543,8 @@ export default function Home() {
               </div>
               {tariff.note ? <p>{tariff.note}</p> : null}
               <ul>
-                {tariff.features.map((feature) => (
-                  <li key={feature}>
+                {tariff.features.map((feature, featureIndex) => (
+                  <li key={featureIndex}>
                     <Check size={17} />
                     {feature}
                   </li>
@@ -598,9 +607,9 @@ export default function Home() {
         <div className="footer-grid">
           <div className="footer-brand">
             <a href="#">Академия Методологии</a>
-            <p>
-              Бесплатная онлайн-встреча для экспертов и предпринимателей о продуктах, которые помогают
-              масштабироваться без ежедневной гонки за охватами.
+            <p className="line-stack">
+              <span>Бесплатная онлайн-встреча для экспертов и предпринимателей</span>
+              <span>о продуктах, которые помогают масштабироваться без ежедневной гонки за охватами.</span>
             </p>
           </div>
 
