@@ -971,8 +971,9 @@ h1 {
 
 .tariff-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 720px);
   gap: 18px;
+  justify-content: center;
   perspective: 1200px;
 }
 

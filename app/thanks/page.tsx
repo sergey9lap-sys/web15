@@ -33,7 +33,6 @@ export default function ThanksPage() {
         .from(titleSplit.lines, { yPercent: 110, opacity: 0, duration: 0.82, stagger: 0.08 }, "-=0.08")
         .from(".thanks-lead", { y: 22, opacity: 0, duration: 0.62 }, "-=0.18")
         .from(".thanks-primary", { y: 18, opacity: 0, scale: 0.98, duration: 0.52 }, "-=0.16")
-        .from(".thanks-note", { y: 18, opacity: 0, duration: 0.55 }, "-=0.08")
         .from(".thanks-support", { y: 34, opacity: 0, duration: 0.75 }, "-=0.18")
         .from(".thanks-support-actions a", { y: 18, opacity: 0, duration: 0.5, stagger: 0.08 }, "-=0.35");
     }, pageRef);
@@ -49,16 +48,14 @@ export default function ThanksPage() {
       <section className="thanks-hero" aria-labelledby="thanks-title">
         <div className="thanks-copy">
           <h1 className="thanks-title" id="thanks-title">Регистрация прошла успешно!</h1>
-          <p className="thanks-lead">Присоединяйтесь к чату экспертного движа по кнопке ниже:</p>
+          <p className="thanks-lead">
+            СМОТРЕТЬ ЗАПИСЬ ЭФИРА, ПОЛУЧИТЬ ПОДАРКИ И УЧАСТВОВАТЬ В БЕСПЛАТНОМ ЧЕЛЛЕНДЖЕ 👇
+          </p>
 
           <a className="thanks-primary" href={chatLink} target="_blank" rel="noopener noreferrer">
-            <span>Попасть в чат</span>
+            <span>Получить доступ</span>
             <Send size={20} aria-hidden />
           </a>
-
-          <p className="thanks-note">
-            Ссылки на эфир и все анонсы только там. Напоминаем, что эфир пройдет 15 июня в 18:30 мск.
-          </p>
         </div>
       </section>
 

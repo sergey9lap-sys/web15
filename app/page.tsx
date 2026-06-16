@@ -2,22 +2,13 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, CalendarDays, Check, ChevronLeft, ChevronRight, MessageCircle, Phone, Send, Users } from "lucide-react";
+import { ArrowRight, CalendarDays, Check, MessageCircle, Phone, Send, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import SplitType from "split-type";
 import { addTrackingParamsToUrl } from "./tracking";
-
-const pains = [
-  "Есть опыт и результаты, стабильных продаж нет",
-  "Клиенты приходят нестабильно, доход зависит от запусков или предсказания нумеролога",
-  "Блог требует всё больше времени, заявок становится меньше",
-  "Нужны клиенты сильнее и платежеспособнее, путь к ним пока неясен",
-  "Есть ощущение, что текущие продукты уже переросли, следующий шаг пока неясен",
-  "После разных форматов системы всё равно нет",
-];
 
 const agenda = [
   {
@@ -194,29 +185,18 @@ const caseStories = [
 
 const tariffs = [
   {
-    name: "Слушатель",
+    name: "Участник",
     price: "0",
     oldPrice: "13,85",
-    note: "Бесплатный формат для тех, кто хочет понять, какой продукт запускать дальше.",
-    features: ["Доступ к эфиру 15 июня онлайн", "Запись на 48 часов", "Экспертный движ: 3 дня заданий в чате"],
-    cta: "Зарегистрироваться бесплатно",
+    note: "Бесплатный формат для тех, кто хочет получить запись эфира и собрать основу премиального продукта.",
+    features: [
+      "Запись эфира на 48 часов",
+      "3 дня заданий в экспертном чате по построению премиального продукта",
+      "Бонус: «25 идей для премиального продукта»",
+    ],
+    cta: "ПОЛУЧИТЬ ЗАПИСЬ",
     widgetId: "b3ba4cfef0f862e9d59a7a80195d608acede5b28",
     widgetUrl: "https://agkedu.getcourse.ru/pl/lite/widget/widget?id=1615201",
-  },
-  {
-    name: "Эксперт",
-    price: "26,57",
-    oldPrice: "54,45",
-    note: "Для тех, кто привык принимать решения быстро и хочет начать масштабироваться прямо сейчас.",
-    features: [
-      "Доступ к эфиру 15 июня + запись",
-      "Мастер-класс «Методология создания и запуска премиальных программ, консалтинга и агентства в реалиях 2026» — 18 июня",
-      "Экспертный движ: 10 дней заданий",
-      "Живые разборы ваших кейсов с Александрой в прямом эфире",
-    ],
-    cta: "Хочу на мастер-класс",
-    widgetId: "7883e0043ed989dc88fe453567ec7b7e16f2c8e1",
-    widgetUrl: "https://agkedu.getcourse.ru/pl/lite/widget/widget?id=1614463",
   },
 ];
 
@@ -394,62 +374,6 @@ export default function Home() {
         };
       }
 
-      gsap.from(".pain-head > *", {
-        y: 28,
-        opacity: 0,
-        duration: 0.75,
-        stagger: 0.08,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".pain-grid", start: "top 76%" },
-      });
-
-      const painCards = gsap.utils.toArray<HTMLElement>(".pain-card");
-      if (window.matchMedia("(min-width: 981px)").matches) {
-        gsap.fromTo(
-          painCards,
-          {
-            x: (index) => [-32, 18, 34, -18, 28, -26][index] ?? 0,
-            y: (index) => [24, -18, 30, -12, 22, -24][index] ?? 0,
-            rotation: (index) => [-4, 2.5, 4, -2.8, 3.2, -3.5][index] ?? 0,
-            opacity: 0,
-            scale: 0.94,
-          },
-          {
-            x: 0,
-            y: 0,
-            rotation: 0,
-            opacity: 1,
-            scale: 1,
-            ease: "power2.out",
-            stagger: 0.035,
-            scrollTrigger: {
-              trigger: ".pain-list",
-              start: "top 78%",
-              end: "center 48%",
-              scrub: 0.8,
-            },
-          },
-        );
-      } else {
-        gsap.from(painCards, {
-          y: 34,
-          opacity: 0,
-          scale: 0.96,
-          stagger: 0.08,
-          duration: 0.65,
-          ease: "power3.out",
-          scrollTrigger: { trigger: ".pain-list", start: "top 78%" },
-        });
-      }
-
-      gsap.from(".pain-action", {
-        y: 22,
-        opacity: 0,
-        duration: 0.6,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".pain-action", start: "top 88%" },
-      });
-
       gsap.from(".host-copy .host-section-title", {
         y: 20,
         opacity: 0,
@@ -495,7 +419,6 @@ export default function Home() {
         const rotateY = gsap.quickTo(card, "rotateY", { duration: 0.35, ease: "power3.out" });
         const scale = gsap.quickTo(card, "scale", { duration: 0.35, ease: "power3.out" });
         const isMapCard = card.classList.contains("map-card");
-        const isPainCard = card.classList.contains("pain-card");
 
         const move = (event: MouseEvent) => {
           const rect = card.getBoundingClientRect();
@@ -505,14 +428,13 @@ export default function Home() {
           rotateX(y * -4);
           rotateY(x * 5);
           if (isMapCard) scale(1.03);
-          if (isPainCard) scale(1.02);
         };
 
         const leave = () => {
           lift(0);
           rotateX(0);
           rotateY(0);
-          if (isMapCard || isPainCard) scale(1);
+          if (isMapCard) scale(1);
         };
 
         card.addEventListener("mousemove", move);
@@ -539,8 +461,10 @@ export default function Home() {
         <div className="hero-copy">
           <div className="eyebrow hero-eyebrow">
             <CalendarDays size={17} />
-            <span>Бесплатная встреча для экспертов и предпринимателей</span>
-            <strong>15 июня · 18:30 мск</strong>
+            <span>
+              Запись эфира для экспертов и предпринимателей + 3 дня заданий в экспертном чате
+              по построению премиального продукта
+            </span>
           </div>
           <h1 className="split-title">
             Что запускать эксперту и предпринимателю <span className="nowrap">в 2026 году</span>, когда охваты больше не работают
@@ -593,27 +517,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section pain-grid" id="for-whom">
-        <div className="pain-head">
-          <h2>Узнаёте себя?</h2>
-        </div>
-        <div className="pain-list">
-          {pains.map((pain, index) => (
-            <article className="pain-card card-motion" key={pain}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <p>{pain}</p>
-            </article>
-          ))}
-        </div>
-        <div className="pain-action">
-          <p>Если совпали хотя бы два пункта — встреча для вас</p>
-          <ButtonLink dark>Зарегистрироваться</ButtonLink>
-        </div>
-      </section>
-
       <section className="section tariffs-section" id="tariffs">
         <div className="section-head full-head reveal">
-          <h2>ДВА ФОРМАТА УЧАСТИЯ</h2>
+          <h2>ФОРМАТ УЧАСТИЯ</h2>
         </div>
         <div className="tariff-grid">
           {tariffs.map((tariff, index) => (
@@ -638,14 +544,14 @@ export default function Home() {
                 <strong><TariffPrice value={tariff.price} /></strong>
               </div>
               <ButtonLink
-                dark={index === 1}
+                dark
                 href={tariff.widgetUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(event) => {
                   event.preventDefault();
                   setActiveWidget({
-                    title: tariff.name === "Слушатель" ? "Бесплатная регистрация" : "Оплата «Эксперт»",
+                    title: "Получить запись эфира",
                     widgetId: tariff.widgetId,
                     widgetUrl: addTrackingParamsToUrl(tariff.widgetUrl),
                   });
