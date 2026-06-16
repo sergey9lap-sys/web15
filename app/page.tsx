@@ -461,9 +461,10 @@ export default function Home() {
         <div className="hero-copy">
           <div className="eyebrow hero-eyebrow">
             <CalendarDays size={17} />
-            <span>
-              Запись эфира для экспертов и предпринимателей + 3 дня заданий в экспертном чате
-              по построению премиального продукта
+            <span className="hero-eyebrow-text">
+              <span>Запись эфира для экспертов</span>
+              <span>и предпринимателей</span>
+              <span>+ 3 дня заданий в экспертном чате по построению премиального продукта</span>
             </span>
           </div>
           <h1 className="split-title">
