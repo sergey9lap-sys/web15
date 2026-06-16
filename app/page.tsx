@@ -464,7 +464,8 @@ export default function Home() {
             <span className="hero-eyebrow-text">
               <span>Запись эфира для экспертов</span>
               <span>и предпринимателей</span>
-              <span>+ 3 дня заданий в экспертном чате по построению премиального продукта</span>
+              <span>+ 3 дня заданий в экспертном чате</span>
+              <span>по построению премиального продукта</span>
             </span>
           </div>
           <h1 className="split-title">
